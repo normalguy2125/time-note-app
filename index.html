@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Time Note - Timestamp Logger</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app-container">
+        <!-- Section A: Header -->
+        <header id="app-header">
+            <div class="header-group left">
+                <button id="undo-btn" class="header-btn">UNDO</button>
+                <button id="redo-btn" class="header-btn">REDO</button>
+            </div>
+            <div class="header-group right">
+                <button id="copy-btn" class="header-btn">COPY</button>
+                <button id="download-btn" class="header-btn">DOWNLOAD</button>
+            </div>
+        </header>
+
+        <!-- Section B: Display Screen -->
+        <main id="display-screen">
+            <pre id="display-content">1)
+(▋</pre>
+        </main>
+
+        <!-- Section C: Fixed On-Screen Keyboard -->
+        <section id="keyboard">
+            <!-- Button Layout (5 rows, 4 columns) -->
+            <button class="key function-key" data-key="C">C</button>
+            <button class="key function-key" data-key="(">(</button>
+            <button class="key function-key" data-key=")">)</button>
+            <button class="key function-key" data-key="backspace">⌫</button>
+
+            <button class="key number-key" data-key="7">7</button>
+            <button class="key number-key" data-key="8">8</button>
+            <button class="key number-key" data-key="9">9</button>
+            <button class="key number-key" data-key=":">:</button>
+
+            <button class="key number-key" data-key="4">4</button>
+            <button class="key number-key" data-key="5">5</button>
+            <button class="key number-key" data-key="6">6</button>
+            <button class="key operator-key" data-key="+">+</button>
+
+            <button class="key number-key" data-key="1">1</button>
+            <button class="key number-key" data-key="2">2</button>
+            <button class="key number-key" data-key="3">3</button>
+            <button class="key operator-key" data-key="-">-</button>
+
+            <button class="key number-key" data-key="0">0</button>
+            <button class="key number-key" data-key=",">,</button>
+            <button class="key function-key ok-key" data-key="OK">OK</button>
+            <button class="key function-key enter-key" data-key="Enter">Enter</button>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
