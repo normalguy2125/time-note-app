@@ -1,1 +1,0 @@
-name: Deploy to GitHub Pages\non: {push: {branches: [main]}, workflow_dispatch:}\njobs:\n  build-and-deploy:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v4\n      - uses: actions/upload-pages-artifact@v3\n        with:\n          path: '.'\n      - id: deployment\n        uses: actions/deploy-pages@v4
