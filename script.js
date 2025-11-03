@@ -290,6 +290,27 @@ class TimeNoteApp {
         } else if (this.parseState.mmDigits > 0 && this.parseState.ssDigits === 0) {
             // Only mm digits entered, no ss: close with )
             text += ')';
+        } else if (this.parseState.mmDigits === 0 && this.parseSt    handleEnter() {
+        let text = this.currentText.replace('▋', '');
+
+        // Intelligent Enter logic based on ss digit count
+        // If ss has only 1 digit: complete to 2 digits and close with )
+        // If ss has 2 digits: remove the auto-added ),( and close with )
+
+        if (this.parseState.ssDigits === 1) {
+            // Single digit in ss: prepend 0 and close with )
+            const lastChar = text[text.length - 1];
+            if (/^\d$/.test(lastChar)) {
+                text = text.slice(0, -1) + '0' + lastChar + ')';
+            }
+        } else if (this.parseState.ssDigits === 2) {
+            // Two digits in ss: remove the auto-added ),(
+            if (text.endsWith('),(')) {
+                text = text.slice(0, -3) + ')';
+            }
+        } else if (this.parseState.mmDigits > 0 && this.parseState.ssDigits === 0) {
+            // Only mm digits entered, no ss: close with )
+            text += ')';
         } else if (this.parseState.mmDigits === 0 && this.parseState.ssDigits === 0) {
             // Empty timestamp: close with )
             text += ')';
@@ -309,7 +330,6 @@ class TimeNoteApp {
         this.saveState();
         this.updateDisplay();
     }
-
     saveState() {
         // Remove any states after the current index (in case we undo and then make a new change)
         this.history = this.history.slice(0, this.historyIndex + 1);
